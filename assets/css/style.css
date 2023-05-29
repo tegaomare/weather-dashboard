@@ -1,0 +1,8 @@
+#page-name {
+  background-color: indigo;
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding: 25px;
+  font-size: x-large;
+}
