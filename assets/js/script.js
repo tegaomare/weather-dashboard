@@ -16,7 +16,7 @@ let requestUrl2 =
   "&units=imperial";
 let requestUrl =
   "https://api.openweathermap.org/data/2.5/weather?q=" +
-  city +
+  cityInput +
   "&appid=a156ce36549069ae356f11172fc650e1&units=imperial";
 
 //USER INTERRACTION
@@ -44,10 +44,6 @@ function getApi() {
       lon = data.coord.lon;
       lat = data.coord.lat;
     });
-  /*  if (response.status === 200) {
-      responseText.textContent = response.status;
-    }
-    return response.json();*/
 
   getApi2();
 }
@@ -57,12 +53,24 @@ function getApi2() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      let dayElIndex = 1;
+      for (i = 5; i < 39; i += 8) {
+        document.getElementById("day-" + dayElIndex + "-date").textContent =
+          data.list[i].dt_txt.slice(0, 10);
+        document.getElementById(
+          "day-" + dayElIndex + "-icon"
+        ).src = `http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`;
+        document.getElementById("day-" + dayElIndex + "-temp").textContent =
+          "Temp: " + data.list[i].main.temp + " F\xB0";
+        document.getElementById("day-" + dayElIndex + "-wind").textContent =
+          "Wind: " + data.list[i].wind.speed + " MPH";
+        document.getElementById("day-" + dayElIndex + "-wind").textContent =
+          "Wind: " + data.list[i].wind.speed + " MPH";
+        document.getElementById("day-" + dayElIndex + "-humid").textContent =
+          "Humidity: " + data.list[i].main.humidity + "%";
+        dayElIndex++;
+      }
     });
-  /*  if (response.status === 200) {
-      responseText.textContent = response.status;
-    }
-    return response.json();*/
 }
 
 getApi();
