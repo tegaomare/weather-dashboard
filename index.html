@@ -29,7 +29,7 @@
               Search
             </button>
           </form>
-          <div class="column">
+          <div class="row" style="width: 15rem;">
               <input
                 type="text"
                 id="Search-input"
@@ -72,43 +72,54 @@
               />
           </div>
         </div>
-        <div class="col-sm-9">
-          <div class="column">
-            <div class="col-8 col-sm-6">
-              <div id="current-weather">current-weather</div>
+        <div class="weather-info-container col-md-8">
+          <div class="current-weather border p-3">
+              <h2 id="city-name">City Name</h2>
+              <img src="" alt="Weather Icon for current weather" id="city-icon">
+              <p id="city-temp">Temp:</p>
+              <p id="city-wind">Wind:</p>
+              <p id="city-humid">Humidity:</p>
+          </div>
+          <div class="5-day-forecast ">
+            <h3 class="pt-3">5-Day Forecast:</h3>
+            <div class="card-container d-flex row justify-content-center m-3 p-3">
+                <article class="card col-sm m-2 p-3 w-25 bg-dark text-white" id="day-1">
+                    <p class="date" id="day-1-date">Date</p>
+                    <img src="" alt="weather icon" id="day-1-icon">
+                    <p class="temp" id="day-1-temp">Temp: </p>
+                    <p class="wind" id="day-1-wind">Wind: </p>
+                    <p class="humid" id="day-1-humid">Humidity: </p>
+                </article>
+                <article class="card col-sm m-2 p-3 w-25 bg-dark text-white" id="day-2">
+                    <p class="date" id="day-2-date">Date</p>
+                    <img src="" alt="weather icon" id="day-2-icon">
+                    <p class="temp" id="day-2-temp">Temp: </p>
+                    <p class="wind" id="day-2-wind">Wind: </p>
+                    <p class="humid" id="day-2-humid">Humidity: </p>
+                </article>
+                <article class="card col-sm m-2 p-3 w-25 bg-dark text-white" id="day-3">
+                    <p class="date" id="day-3-date">Date</p>
+                    <img src="" alt="weather icon" id="day-3-icon">
+                    <p class="temp" id="day-3-temp">Temp: </p>
+                    <p class="wind" id="day-3-wind">Wind: </p>
+                    <p class="humid" id="day-3-humid">Humidity: </p>
+                </article>
+                <article class="card col-sm m-2 p-3 w-25 bg-dark text-white" id="day-4">
+                    <p class="date" id="day-4-date">Date</p>
+                    <img src="" alt="weather icon" id="day-4-icon">
+                    <p class="temp" id="day-4-temp">Temp: </p>
+                    <p class="wind" id="day-4-wind">Wind: </p>
+                    <p class="humid" id="day-4-humid">Humidity: </p>
+                </article>
+                <article class="card col-sm m-2 p-3 w-25 bg-dark text-white" id="day-5">
+                    <p class="date" id="day-5-date">Date</p>
+                    <img src="" alt="weather icon" id="day-5-icon">
+                    <p class="temp" id="day-5-temp">Temp: </p>
+                    <p class="wind" id="day-5-wind">Wind: </p>
+                    <p class="humid" id="day-5-humid">Humidity: </p>
+                </article>
             </div>
-            <div class="col-4 col-sm-6">
-              <div id="forecast-weather">5-days forecast-weather</div>
-              <div class="row">
-                  <div class="col"><div class="card" style="width: 15rem;">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">9/17/2022</li>
-                      <li class="list-group-item">Temp:</li>
-                      <li class="list-group-item">Wind:</li>
-                      <li class="list-group-item">Humidity</li>
-                    </ul>
-                  </div></div>
-                  <div class="col"> <ul class="list-group list-group-flush">
-                      <li class="list-group-item">9/17/2022</li>
-                      <li class="list-group-item">Temp:</li>
-                      <li class="list-group-item">Wind:</li>
-                      <li class="list-group-item">Humidity</li>
-                    </ul></div>
-                  <div class="col"> <ul class="list-group list-group-flush">
-                      <li class="list-group-item">9/17/2022</li>
-                      <li class="list-group-item">Temp:</li>
-                      <li class="list-group-item">Wind:</li>
-                      <li class="list-group-item">Humidity</li>
-                    </ul></div>
-                  <div class="col"> <ul class="list-group list-group-flush">
-                      <li class="list-group-item">9/17/2022</li>
-                      <li class="list-group-item">Temp:</li>
-                      <li class="list-group-item">Wind:</li>
-                      <li class="list-group-item">Humidity</li>
-                    </ul></div>
-                </div>
-                </div>
-              </div>
+        </div>
             </div>
           </div>
         </div>
