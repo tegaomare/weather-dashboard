@@ -53,3 +53,25 @@ let searchInput = document.querySelector("#search-input");
 let searchHistory = document.querySelector("#search-history");
 let currentWeather = document.querySelector("#current-weather");
 let forecastWeather = document.querySelector("#forecast-weather");
+
+//FUNCTIONS
+// Function to fetch weather data from the API
+function getWeatherData(city) {
+  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+
+  fetch(apiUrl)
+    .then(function (response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Error: " + response.status);
+      }
+    })
+    .then(function (data) {
+      // Process current weather data
+      let cityName = data.name;
+      let date = new Date(data.dt * 1000);
+      let icon = data.weather[0].icon;
+      let temperature = data.main.temp;
+      let humidity = data.main.humidity;
+      let windSpeed = data.wind.speed;
