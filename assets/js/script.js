@@ -1,7 +1,8 @@
 //INDEPENDENCES
-let searchForm = document.getElementById("search-form");
-let cityInput = document.getElementById("city-input");
-let searchBtn = document.getElementById("Search-button");
+let cityInput = document.querySelector("city-input");
+let searchBtn = document.querySelector("#Search-button");
+let lat;
+let lon;
 let city = "staten island";
 let apiKey = "a156ce36549069ae356f11172fc650e1";
 let requestUrl2 =
@@ -14,8 +15,6 @@ let requestUrl =
   "https://api.openweathermap.org/data/2.5/weather?q=" +
   city +
   "&appid=a156ce36549069ae356f11172fc650e1&units=imperial";
-//DATA
-let cityName = cityInput;
 
 //USER INTERRACTION
 searchBtn.addEventListener("click", getApi);
