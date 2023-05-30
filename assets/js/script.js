@@ -1,4 +1,4 @@
-//FUNCTIONS
+/*//FUNCTIONS
 function handleFormSubmit(event) {
   event.preventDefault(); // Prevents the form from submitting and refreshing the page
 
@@ -45,4 +45,11 @@ function handleHistoryClick(event) {
   const selectedCity = event.target.textContent;
   // Perform the necessary API calls to retrieve weather data for the selected city
   // Update the currentWeather and forecast sections with the retrieved data
-}
+}*/
+//INDEPENDENCES
+let apiKey = "726dd2a088e2e0adb78e5c10f95f5ecc";
+let searchForm = document.querySelector("#search-form");
+let searchInput = document.querySelector("#search-input");
+let searchHistory = document.querySelector("#search-history");
+let currentWeather = document.querySelector("#current-weather");
+let forecastWeather = document.querySelector("#forecast-weather");
