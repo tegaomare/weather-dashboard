@@ -4,27 +4,10 @@ let searchBtn = document.querySelector("#Search-button");
 let prevSearch = document.querySelector("#previous-Search");
 
 //DATA
-let lat;
-let lon;
 let today = dayjs().format("M/D/YYYY");
 let city = "staten island";
 let apiKey = "726dd2a088e2e0adb78e5c10f95f5ecc";
-/*let requestUrl =
-  "https:https://api.openweathermap.org/data/2.5/weather?q=" +
-  cityInput.value +
-  "&appid=" +
-  apiKey;
-console.log(requestUrl);*/
-/*let requestUrl2 =
-  "https://api.openweathermap.org/data/2.5/forecast?q=" +
-  cityInput.value +
-  "lat=" +
-  lat +
-  "&lon=" +
-  lon +
-  "&appid=" +
-  apiKey +
-  "&units=imperial";*/
+
 //USER INTERRACTION
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -46,9 +29,8 @@ function saveCity(cityName) {
   cities.push(cityName);
   localStorage.setItem("cities", JSON.stringify(cities));
 }
-//FUNCTION
-//let responseText = document.getElementById("response-text");
 
+//FUNCTION
 function getApi(requestUrl) {
   fetch(requestUrl)
     .then(function (response) {
@@ -110,4 +92,3 @@ function renderLastRegistered() {
     prevSearch.innerHTML += "<li>" + prevSearchList[i] + "</li>";
   }
 }
-//for (i=0; i < somearray.lenght; i+=8) for url2
