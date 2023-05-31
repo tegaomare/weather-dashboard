@@ -8,12 +8,14 @@ let lat;
 let lon;
 let today = dayjs().format("M/D/YYYY");
 let city = "staten island";
-let apiKey = "a156ce36549069ae356f11172fc650e1";
-let requestUrl =
-  "https://api.openweathermap.org/data/2.5/weather?q=" +
+let apiKey = "726dd2a088e2e0adb78e5c10f95f5ecc";
+/*let requestUrl =
+  "https:https://api.openweathermap.org/data/2.5/weather?q=" +
   cityInput.value +
-  "&appid=a156ce36549069ae356f11172fc650e1&units=imperial";
-let requestUrl2 =
+  "&appid=" +
+  apiKey;
+console.log(requestUrl);*/
+/*let requestUrl2 =
   "https://api.openweathermap.org/data/2.5/forecast?q=" +
   cityInput.value +
   "lat=" +
@@ -22,16 +24,32 @@ let requestUrl2 =
   lon +
   "&appid=" +
   apiKey +
-  "&units=imperial";
+  "&units=imperial";*/
 //USER INTERRACTION
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  getApi();
+  localStorage.setItem("city-name", cityInput.value);
+  let requestUrl =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    cityInput.value +
+    "&appid=" +
+    apiKey;
+  getApi(requestUrl);
 });
+function saveCity(cityName) {
+  let cities = localStorage.getItem("cities");
+  if (!cities) {
+    cities = [];
+  } else {
+    cities = JSON.parse(cities);
+  }
+  cities.push(cityName);
+  localStorage.setItem("cities", JSON.stringify(cities));
+}
 //FUNCTION
 //let responseText = document.getElementById("response-text");
 
-function getApi() {
+function getApi(requestUrl) {
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
@@ -55,6 +73,12 @@ function getApi() {
   renderLastRegistered();
 }
 function getApi2() {
+  let requestUrl2 =
+    "https://api.openweathermap.org/data/2.5/forecast?q=" +
+    cityInput.value +
+    "&appid=" +
+    apiKey +
+    "&units=imperial";
   fetch(requestUrl2)
     .then(function (response) {
       return response.json();
@@ -78,10 +102,10 @@ function getApi2() {
     });
 }
 function renderLastRegistered() {
-  let prevSearch = localStorage.getItem("city-name");
-  if (prevSearch) {
-    return;
+  let prevSearchList = JSON.parse(localStorage.getItem("cities"));
+
+  for (let i = 0; i < prevSearchList.length; i++) {
+    prevSearch.innerHTML += "<li>" + prevSearchList[i] + "</li>";
   }
-  userprevSearch.textContent = prevSearch;
 }
 //for (i=0; i < somearray.lenght; i+=8) for url2
