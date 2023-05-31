@@ -1,5 +1,5 @@
 //INDEPENDENCES
-let cityInput = document.querySelector("#city-name");
+let cityInput = document.querySelector("#city-srch");
 let searchBtn = document.querySelector("#Search-button");
 let prevSearch = document.querySelector("#previous-Search");
 
