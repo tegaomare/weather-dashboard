@@ -3,7 +3,7 @@ let cityInput = document.querySelector("#city-input");
 let searchBtn = document.querySelector("#Search-button");
 let lat;
 let lon;
-let today = dayjs().format("ddd MMM D, YYYY");
+let today = dayjs().format("M/D/YYYY");
 let city = "staten island";
 let apiKey = "a156ce36549069ae356f11172fc650e1";
 let requestUrl2 =
@@ -81,6 +81,11 @@ function getApi() {
       }
     });
 }
+function runOldSearch(event) {
+  cityInput.value = localStorage.getItem(event.target.innerText);
+  getApi();
+}
+
 function createPastSearchButton() {
   let pastSearchButton = document.createElement("button");
 
@@ -105,10 +110,7 @@ function createPastSearchButton() {
   //adds a listener to the past search buttons
   let pastSearchButtons = document.getElementsByClassName("pastSearchButtonC");
   for (var i = 0; i < pastSearchButtons.length; i++) {
-    pastSearchButtons[i].addEventListener("click", function (event) {
-      cityInput.value = localStorage.getItem(event.target.innerText);
-      getApi();
-    });
+    pastSearchButtons[i].addEventListener("click", runOldSearch);
   }
 }
 
