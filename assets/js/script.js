@@ -1,5 +1,5 @@
 //INDEPENDENCES
-let cityInput = document.querySelector("city-input");
+let cityInput = document.querySelector("#city-input");
 let searchBtn = document.querySelector("#Search-button");
 let lat;
 let lon;
@@ -16,15 +16,19 @@ let requestUrl2 =
   "&units=imperial";
 let requestUrl =
   "https://api.openweathermap.org/data/2.5/weather?q=" +
-  cityInput +
+  cityInput.value +
   "&appid=a156ce36549069ae356f11172fc650e1&units=imperial";
 
 //USER INTERRACTION
-searchBtn.addEventListener("click", getApi);
+//searchBtn.addEventListener("click", getApi);
 //FUNCTION
 let responseText = document.getElementById("response-text");
 
 function getApi() {
+  /*let requestUrl =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    cityInput.value +
+    "&appid=a156ce36549069ae356f11172fc650e1&units=imperial";*/
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
@@ -45,9 +49,14 @@ function getApi() {
       lat = data.coord.lat;
     });
 
-  getApi2();
-}
-function getApi2() {
+  /*let requestUrl2 =
+    "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+    lat +
+    "&lon=" +
+    lon +
+    "&appid=" +
+    apiKey +
+    "&units=imperial";*/
   fetch(requestUrl2)
     .then(function (response) {
       return response.json();
@@ -72,6 +81,38 @@ function getApi2() {
       }
     });
 }
+function createPastSearchButton() {
+  var cityName = document.querySelector("#inputbox").value;
+  var pastSearchButton = document.createElement("button");
 
-getApi();
+  //set this cityName value into local storage
+  localStorage.setItem(
+    document.querySelector("#inputbox").value,
+    document.querySelector("#inputbox").value
+  );
+
+  pastSearchButton.id = "pastSearchButton" + cityName;
+  pastSearchButton.innerText = cityName;
+  //makes the button pretty
+  pastSearchButton.classList.add(
+    "btn",
+    "btn-secondary",
+    "btn-lg",
+    "custombtn",
+    "pastSearchButtonC"
+  );
+  document.querySelector("#prevsearch").appendChild(pastSearchButton);
+
+  //adds a listener to the past search buttons
+  var pastSearchButtons = document.getElementsByClassName("pastSearchButtonC");
+  for (var i = 0; i < pastSearchButtons.length; i++) {
+    pastSearchButtons[i].addEventListener("click", runOldSearch);
+  }
+}
+
+//searchBtn.addEventListener("click", getApi);
+searchBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  getApi();
+});
 //for (i=0; i < somearray.lenght; i+=8) for url2
