@@ -1,6 +1,7 @@
 //INDEPENDENCES
 let cityInput = document.querySelector("#city-name");
 let searchBtn = document.querySelector("#Search-button");
+let prevSearch = document.querySelector("#previous-Search");
 
 //DATA
 let lat;
@@ -51,6 +52,7 @@ function getApi() {
       lat = data.coord.lat;
     });
   getApi2();
+  renderLastRegistered();
 }
 function getApi2() {
   fetch(requestUrl2)
@@ -75,5 +77,11 @@ function getApi2() {
       }
     });
 }
-
+function renderLastRegistered() {
+  let prevSearch = localStorage.getItem("city-name");
+  if (prevSearch) {
+    return;
+  }
+  userprevSearch.textContent = prevSearch;
+}
 //for (i=0; i < somearray.lenght; i+=8) for url2
