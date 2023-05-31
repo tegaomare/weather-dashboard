@@ -86,16 +86,18 @@ function getApi2() {
     .then(function (data) {
       let dayElIndex = 1;
       for (i = 5; i < 39; i += 8) {
-        document.getElementsByClassName("date" + dayElIndex).textContent =
+        document.getElementById("day-" + dayElIndex + "-date").textContent =
           data.list[i].dt_txt.slice(0, 10);
         document.getElementById(
           "day-" + dayElIndex + "-icon"
         ).src = `http://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`;
-        document.getElementsByClassName("temp" + dayElIndex).textContent =
+        document.getElementById("day-" + dayElIndex + "-temp").textContent =
           "Temp: " + data.list[i].main.temp + " F\xB0";
-        document.getElementsByClassName("wind" + dayElIndex).textContent =
+        document.getElementById("day-" + dayElIndex + "-wind").textContent =
           "Wind: " + data.list[i].wind.speed + " MPH";
-        document.getElementsByClassName("humid" + dayElIndex).textContent =
+        document.getElementById("day-" + dayElIndex + "-wind").textContent =
+          "Wind: " + data.list[i].wind.speed + " MPH";
+        document.getElementById("day-" + dayElIndex + "-humid").textContent =
           "Humidity: " + data.list[i].main.humidity + "%";
         dayElIndex++;
       }
