@@ -1,4 +1,4 @@
-<img src="./assets/images/webpage.PNG" alt="portfolio webpage picture" >
+<img src="./assets/images/page-img.PNG" alt="weather webpage picture" >
 
 ## Description
 
@@ -10,7 +10,7 @@ N/A
 
 ## App link
 
-https://tegaomare.github.io/Professional-Portfolio/
+https://tegaomare.github.io/weather-dashboard/
 
 ## Usage
 
