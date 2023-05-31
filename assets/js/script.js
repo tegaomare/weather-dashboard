@@ -82,17 +82,13 @@ function getApi() {
     });
 }
 function createPastSearchButton() {
-  var cityName = document.querySelector("#inputbox").value;
-  var pastSearchButton = document.createElement("button");
+  let pastSearchButton = document.createElement("button");
 
   //set this cityName value into local storage
-  localStorage.setItem(
-    document.querySelector("#inputbox").value,
-    document.querySelector("#inputbox").value
-  );
+  localStorage.setItem(cityInput.value);
 
-  pastSearchButton.id = "pastSearchButton" + cityName;
-  pastSearchButton.innerText = cityName;
+  pastSearchButton.id = "pastSearchButton" + cityInput;
+  pastSearchButton.innerText = cityInput;
   //makes the button pretty
   pastSearchButton.classList.add(
     "btn",
@@ -101,10 +97,10 @@ function createPastSearchButton() {
     "custombtn",
     "pastSearchButtonC"
   );
-  document.querySelector("#prevsearch").appendChild(pastSearchButton);
+  document.querySelector("#previous-Search").appendChild(pastSearchButton);
 
   //adds a listener to the past search buttons
-  var pastSearchButtons = document.getElementsByClassName("pastSearchButtonC");
+  let pastSearchButtons = document.getElementsByClassName("pastSearchButtonC");
   for (var i = 0; i < pastSearchButtons.length; i++) {
     pastSearchButtons[i].addEventListener("click", runOldSearch);
   }
