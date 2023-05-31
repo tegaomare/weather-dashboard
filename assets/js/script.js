@@ -85,10 +85,13 @@ function createPastSearchButton() {
   let pastSearchButton = document.createElement("button");
 
   //set this cityName value into local storage
-  localStorage.setItem(cityInput.value);
+  localStorage.setItem(
+    document.querySelector("#inputbox").value,
+    document.querySelector("#inputbox").value
+  );
 
-  pastSearchButton.id = "pastSearchButton" + cityInput;
-  pastSearchButton.innerText = cityInput;
+  pastSearchButton.id = "pastSearchButton" + cityInput.value;
+  pastSearchButton.innerText = cityInput.value;
   //makes the button pretty
   pastSearchButton.classList.add(
     "btn",
@@ -102,7 +105,10 @@ function createPastSearchButton() {
   //adds a listener to the past search buttons
   let pastSearchButtons = document.getElementsByClassName("pastSearchButtonC");
   for (var i = 0; i < pastSearchButtons.length; i++) {
-    pastSearchButtons[i].addEventListener("click", runOldSearch);
+    pastSearchButtons[i].addEventListener("click", function (event) {
+      cityInput.value = localStorage.getItem(event.target.innerText);
+      getApi();
+    });
   }
 }
 
