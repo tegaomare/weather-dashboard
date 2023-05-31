@@ -19,7 +19,7 @@ searchBtn.addEventListener("click", function (event) {
     apiKey;
   getApi(requestUrl);
 });
-function saveCity(cityName) {
+/*function saveCity(cityName) {
   let cities = localStorage.getItem("cities");
   if (!cities) {
     cities = [];
@@ -28,7 +28,33 @@ function saveCity(cityName) {
   }
   cities.push(cityName);
   localStorage.setItem("cities", JSON.stringify(cities));
+}*/
+/*function saveCity() {
+  let cityName = document.querySelector("#city-srch").value;
+  let pastSearchList = document.createElement("li");
+
+  // set this cityName value into local storage
+  localStorage.setItem(cityName, cityName);
+
+  pastSearchList.id = "pastSearchList" + cityName;
+  pastSearchList.innerText = cityName;
+
+  // append the past search list item to the previous search list
+  document.querySelector("#prevsearch").appendChild(pastSearchList);
+
+  // add a listener to the past search list item
+  pastSearchList.addEventListener("click", renderLastRegistered);
+
+  renderLastRegistered();
 }
+
+function renderLastRegistered(event) {
+  let cityName = event.target.innerText;
+  document.querySelector("#city-srch").value = localStorage.getItem(cityName);
+
+  // call getApi() function or do something with the retrieved value
+  getApi();
+}*/
 
 //FUNCTION
 function getApi(requestUrl) {
@@ -52,7 +78,6 @@ function getApi(requestUrl) {
       lat = data.coord.lat;
     });
   getApi2();
-  renderLastRegistered();
 }
 function getApi2() {
   let requestUrl2 =
@@ -85,10 +110,10 @@ function getApi2() {
       }
     });
 }
-function renderLastRegistered() {
+/*function renderLastRegistered() {
   let prevSearchList = JSON.parse(localStorage.getItem("cities"));
 
   for (let i = 0; i < prevSearchList.length; i++) {
     prevSearch.innerHTML += "<li>" + prevSearchList[i] + "</li>";
   }
-}
+}*/
