@@ -23,7 +23,10 @@ let requestUrl2 =
   apiKey +
   "&units=imperial";
 //USER INTERRACTION
-//searchBtn.addEventListener("click", getApi);
+searchBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  getApi();
+});
 //FUNCTION
 //let responseText = document.getElementById("response-text");
 
@@ -73,9 +76,4 @@ function getApi2() {
     });
 }
 
-//searchBtn.addEventListener("click", getApi);
-searchBtn.addEventListener("click", function (event) {
-  event.preventDefault();
-  getApi();
-});
 //for (i=0; i < somearray.lenght; i+=8) for url2
