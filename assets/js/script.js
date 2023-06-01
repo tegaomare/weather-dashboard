@@ -11,51 +11,58 @@ let apiKey = "726dd2a088e2e0adb78e5c10f95f5ecc";
 //USER INTERRACTION
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  localStorage.setItem("city-name", cityInput.value);
+  //localStorage.setItem("city-name", cityInput.value);
+  saveCity(cityInput.value);
   let requestUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     cityInput.value +
     "&appid=" +
-    apiKey;
+    apiKey +
+    "&units=imperial";
   getApi(requestUrl);
 });
-/*function saveCity(cityName) {
-  let cities = localStorage.getItem("cities");
+function saveCity(cityName) {
+  let cities = localStorage.getItem("city-name");
   if (!cities) {
     cities = [];
   } else {
     cities = JSON.parse(cities);
   }
-  cities.push(cityName);
-  localStorage.setItem("cities", JSON.stringify(cities));
-}*/
-/*function saveCity() {
-  let cityName = document.querySelector("#city-srch").value;
-  let pastSearchList = document.createElement("li");
+  // Stringified Array:
+  // "city-name": ["New York", "Los Angeles", "Brooklyn"]
 
-  // set this cityName value into local storage
-  localStorage.setItem(cityName, cityName);
-
-  pastSearchList.id = "pastSearchList" + cityName;
-  pastSearchList.innerText = cityName;
-
-  // append the past search list item to the previous search list
-  document.querySelector("#prevsearch").appendChild(pastSearchList);
-
-  // add a listener to the past search list item
-  pastSearchList.addEventListener("click", renderLastRegistered);
+  // Parsed Array:
+  // city-name: ["New York", "Los Angeles", "Brooklyn"]
+  if (!cities.includes(cityName)) {
+    cities.push(cityName);
+    localStorage.setItem("city-name", JSON.stringify(cities));
+  }
 
   renderLastRegistered();
 }
+// function saveCity() {
+//   let cityName = document.querySelector("#city-srch").value;
+//   let pastSearchList = document.createElement("li");
+
+//   // set this cityName value into local storage
+//   localStorage.setItem(cityName, cityName);
+
+//   pastSearchList.id = "pastSearchList" + cityName;
+//   pastSearchList.innerText = cityName;
+
+//   // append the past search list item to the previous search list
+//   document.querySelector("#prevsearch").appendChild(pastSearchList);
+
+//   // add a listener to the past search list item
+//   pastSearchList.addEventListener("click", renderLastRegistered);
+
+//   renderLastRegistered();
+// }
 
 function renderLastRegistered(event) {
   let cityName = event.target.innerText;
   document.querySelector("#city-srch").value = localStorage.getItem(cityName);
-
-  // call getApi() function or do something with the retrieved value
-  getApi();
-}*/
-
+}
 //FUNCTION
 function getApi(requestUrl) {
   fetch(requestUrl)
@@ -110,10 +117,11 @@ function getApi2() {
       }
     });
 }
-/*function renderLastRegistered() {
-  let prevSearchList = JSON.parse(localStorage.getItem("cities"));
-
+function renderLastRegistered() {
+  let prevSearchList = JSON.parse(localStorage.getItem("city-name"));
+  prevSearch.innerHTML = "";
   for (let i = 0; i < prevSearchList.length; i++) {
     prevSearch.innerHTML += "<li>" + prevSearchList[i] + "</li>";
   }
-}*/
+}
+renderLastRegistered();
