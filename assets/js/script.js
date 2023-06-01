@@ -11,7 +11,7 @@ let apiKey = "726dd2a088e2e0adb78e5c10f95f5ecc";
 //USER INTERRACTION
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault();
-  //localStorage.setItem("city-name", cityInput.value);
+  document.querySelector(".weather-info-container").style.display = "block";
   saveCity(cityInput.value);
   let requestUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -28,11 +28,6 @@ function saveCity(cityName) {
   } else {
     cities = JSON.parse(cities);
   }
-  // Stringified Array:
-  // "city-name": ["New York", "Los Angeles", "Brooklyn"]
-
-  // Parsed Array:
-  // city-name: ["New York", "Los Angeles", "Brooklyn"]
   if (!cities.includes(cityName)) {
     cities.push(cityName);
     localStorage.setItem("city-name", JSON.stringify(cities));
@@ -40,24 +35,6 @@ function saveCity(cityName) {
 
   renderLastRegistered();
 }
-// function saveCity() {
-//   let cityName = document.querySelector("#city-srch").value;
-//   let pastSearchList = document.createElement("li");
-
-//   // set this cityName value into local storage
-//   localStorage.setItem(cityName, cityName);
-
-//   pastSearchList.id = "pastSearchList" + cityName;
-//   pastSearchList.innerText = cityName;
-
-//   // append the past search list item to the previous search list
-//   document.querySelector("#prevsearch").appendChild(pastSearchList);
-
-//   // add a listener to the past search list item
-//   pastSearchList.addEventListener("click", renderLastRegistered);
-
-//   renderLastRegistered();
-// }
 
 function renderLastRegistered(event) {
   let cityName = event.target.innerText;

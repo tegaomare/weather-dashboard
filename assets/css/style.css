@@ -7,6 +7,7 @@
   font-size: x-large;
 }
 .weather-info-container {
+  display: none;
   margin-left: 262px;
   margin-top: -94px;
 }
